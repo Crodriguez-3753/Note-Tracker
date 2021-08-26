@@ -1,9 +1,7 @@
 const express = require("express");
 const path = require("path");
-const notesJSON = require("./db/db.json");
+const store = require("./db/STORE");
 
-//const notesArray = JSON.parse (notesJSON);
-console.log(notesJSON);
 const app = express();
 const PORT = 3000;
 
@@ -20,13 +18,13 @@ app.use(express.static("public"));
 
 // get API notes
 app.get("/api/notes", (req, res) => {
-    res.json(notesJSON)
+    res.json(store.read())
 });
 
 //post API notes
 app.post("/api/notes", (req, res) => {
-   notesJSON.push(req.body)
-   res.json(notesJSON.length -1)
+   const id = store.addNote(req.body)
+   res.json(id)
 })
 
 // HTML routes
