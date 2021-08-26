@@ -37,7 +37,7 @@ app.delete("/api/notes/:noteIndex", (req, res) => {
     console.log(req.params.noteIndex)
     const id = store.addNote(req.body)
     res.json(id)
- })
+ });
  
 
 // HTML routes
