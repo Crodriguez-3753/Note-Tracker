@@ -9,9 +9,9 @@ class Store{
         return noteJSON;
     };
     addNote(note){
-    const length = noteJSON.push(note);
+    noteJSON.push(note);
     writeFileSync(path.join(__dirname, "db.json"), JSON.stringify(noteJSON));
-    return length -1;
+    return note
     };
 }
 
